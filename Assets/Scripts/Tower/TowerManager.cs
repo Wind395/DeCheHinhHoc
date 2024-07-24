@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject[] towers;
+    private GameObject currentTowerPosition;
+
+    public void SetTowerPosition(GameObject position)
     {
-        
+        currentTowerPosition = position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BuildTower(int towerIndex)
     {
-        
+        if (currentTowerPosition != null && towerIndex >= 0 && towerIndex < towers.Length)
+        {
+            Instantiate(towers[towerIndex], currentTowerPosition.transform.position, Quaternion.identity);
+            currentTowerPosition = null;
+        }
     }
 }

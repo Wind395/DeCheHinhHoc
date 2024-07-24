@@ -4,41 +4,12 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public static BuildManager instance;
-
-    [SerializeField] GameObject[] towerPrefabs;
-
-    public int selectTower = 0;
-
-
-    private void Awake()
+    public TowerManager towerManager;
+    public BuildPlace buildPlace;
+    public void OnTowerButtonClicked(int towerIndex)
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        towerManager.BuildTower(towerIndex);
+        gameObject.SetActive(false);
+        buildPlace.frame.enabled = false;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public GameObject SelectedTower()
-    {
-        return towerPrefabs[selectTower];
-    }
-
 }
