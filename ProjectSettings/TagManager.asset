@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Build Places
+    uniqueID: 2670449943
+    locked: 0
+  - name: Lane
+    uniqueID: 610318431
+    locked: 0
+  - name: Towers
+    uniqueID: 1924962061
+    locked: 0
+  - name: Enemy
+    uniqueID: 1942595475
+    locked: 0
+  - name: Bullet
+    uniqueID: 3093375915
+    locked: 0
+  - name: UI
+    uniqueID: 50738067
     locked: 0
