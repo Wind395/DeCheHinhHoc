@@ -20,8 +20,8 @@ public class WaveManager : MonoBehaviour
     public WaveData waveData;
     public string currentMapName;
 
-    private int currentWave = 0;
-    private int totalWavesInCurrentMap = 0;
+    public int currentWave { get; private set; } = 0;
+    public int totalWavesInCurrentMap { get; private set; } = 0;
 
     void Start()
     {

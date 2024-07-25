@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
     public float atkSpeed;
     public float range;
     private float fireCountDown = 0f;
+    [SerializeField] private float roatationSpeed = 200f;
 
     [Header("Other Components")]
     public GameObject Bullet;
@@ -38,7 +39,7 @@ public class Tower : MonoBehaviour
         level = tower.level;
         damage = tower.damage;
         atkSpeed = tower.atkSpeed;
-        range = tower.range;
+        range = tower.range * .02f;
     }
 
     private void FindTargetShoot()
@@ -49,9 +50,18 @@ public class Tower : MonoBehaviour
         {
             if (findTarget != null)
             {
+                target = c.transform;
+                RotateTowardTarget();
                 ShootCountDown();
             }
         }
+    }
+
+    private void RotateTowardTarget()
+    {
+        float angel = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angel));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, roatationSpeed * Time.deltaTime);
     }
 
     private void ShootCountDown()

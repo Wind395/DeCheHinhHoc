@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6198962782431214103}
   - component: {fileID: 8647616816833448255}
-  - component: {fileID: 7384516368256151833}
   - component: {fileID: 8868948462670135119}
   - component: {fileID: 2766012610828786684}
+  - component: {fileID: -178311492563600832}
   m_Layer: 6
   m_Name: Normal_enemy
   m_TagString: Enemy
@@ -87,59 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7384516368256151833
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6361283684782797115}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3902439, y: 0.3902439}
-    newSize: {x: 0.3902439, y: 0.3902439}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.09790385, y: 0.19594568}
-      - {x: -0.19594568, y: 0.013384089}
-      - {x: -0.19512194, y: -0.0130410865}
-      - {x: -0.09708418, y: -0.19590384}
-      - {x: 0.09888779, y: -0.19594568}
-      - {x: 0.19512194, y: -0.0117366165}
-      - {x: 0.19429821, y: 0.0122174695}
-      - {x: 0.09691991, y: 0.19512194}
-  m_UseDelaunayMesh: 0
 --- !u!50 &8868948462670135119
 Rigidbody2D:
   serializedVersion: 4
@@ -183,3 +130,38 @@ MonoBehaviour:
   health: 200
   damage: 0
   speed: 1
+--- !u!58 &-178311492563600832
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361283684782797115}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1

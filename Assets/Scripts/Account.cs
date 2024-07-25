@@ -11,6 +11,7 @@ public class Account : MonoBehaviour
 {
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
+    public TMP_InputField playerNameField;
     public TextMeshProUGUI message;
     public Button loginButton;
     public Button registerButton;
@@ -24,7 +25,6 @@ public class Account : MonoBehaviour
     void OnLogin()
     {
         StartCoroutine(LoginAccount());
-        
     }
 
     void OnRegister()
@@ -61,13 +61,21 @@ public class Account : MonoBehaviour
             }
             else
             {
-                message.text = "Login successfully!\nWait to Login...";
-                PlayerPrefs.SetString("token", get);
-                Debug.Log(get);
+                if(playerNameField.text == "")
+                {
+                    message.text = "WHAT IS YOUR NAME?";                    
+                }
+                else
+                {
+                    message.text = "Login successfully!\nWait to Login...";
+                    PlayerPrefs.SetString("token", get);
+                    PlayerPrefs.SetString("name", playerNameField.text);
+                    Debug.Log(get);
+                    yield return new WaitForSeconds(2);
+                    SceneManager.LoadScene(1);
+                }
             }
-        }
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(1);
+        }        
     }
 
     IEnumerator RegistAccount()

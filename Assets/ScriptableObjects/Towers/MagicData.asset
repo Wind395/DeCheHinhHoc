@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 1
   cost: 140
   damage: 30
-  range: 2
+  range: 115
   atkSpeed: 0.8

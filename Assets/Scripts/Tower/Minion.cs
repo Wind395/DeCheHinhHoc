@@ -50,7 +50,7 @@ public class Minion : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, target.position);
 
-        if (distance <= 0.3)
+        if (distance <= 0.4)
         {
             // Attack the enemy
             target.GetComponent<Enemy>().TakeDamage(damage);

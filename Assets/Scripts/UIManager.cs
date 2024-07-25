@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public Button[] buttons;
 
     // Button Exit để chuyển về scene login
-    public Button exitButton;
+    public Button logoutButton;
 
 
     void Start()
@@ -36,9 +36,9 @@ public class UIManager : MonoBehaviour
         }
 
         // Thiết lập sự kiện cho nút Exit
-        if (exitButton != null)
+        if (logoutButton != null)
         {
-            exitButton.onClick.AddListener(ExitToLoginScene);
+            logoutButton.onClick.AddListener(ExitToLoginScene);
         }
     }
 
@@ -55,6 +55,11 @@ public class UIManager : MonoBehaviour
         {
             panelToShow.SetActive(true);
         }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     public void ExitToLoginScene()
