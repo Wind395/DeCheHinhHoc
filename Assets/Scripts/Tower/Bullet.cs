@@ -6,8 +6,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    private float speed = 5f;
-    private int damage = 1;
+    public int damage;
+    public float Speed;
+
     private Transform target;
 
     Vector2 direction;
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         enemyInfo = target.GetComponent<Enemy>();
+        
     }
 
     // Update is called once per frame
@@ -31,23 +33,20 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+
         direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction * speed;
+        rb.velocity = direction * Speed;
+    }
+
+    public void SetStatsBullet(int damageValue)
+    {
+        damage = damageValue;
     }
 
     public void Seek(Transform _target)
     {
         target = _target;
-    }
-
-    public void HitTarget()
-    {
-        if (enemyInfo != null)
-        {
-            
-        }
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

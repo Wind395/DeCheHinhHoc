@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -47,14 +48,14 @@ TagManager:
   - name: Lane
     uniqueID: 610318431
     locked: 0
+  - name: Bullet
+    uniqueID: 3093375915
+    locked: 0
   - name: Towers
     uniqueID: 1924962061
     locked: 0
   - name: Enemy
     uniqueID: 1942595475
-    locked: 0
-  - name: Bullet
-    uniqueID: 3093375915
     locked: 0
   - name: UI
     uniqueID: 50738067

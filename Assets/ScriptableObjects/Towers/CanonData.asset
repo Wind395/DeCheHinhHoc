@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9328c54299f53e24589d9007ea9860bc, type: 3}
+  m_Name: CanonData
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 2281102718068509092, guid: 4bb82d4c137c4dd49af90bb410fc6cd4, type: 3}
+  level: 1
+  cost: 140
+  damage: 30
+  range: 1.9
+  atkSpeed: 0.5

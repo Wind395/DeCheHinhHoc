@@ -8,10 +8,9 @@ public class Tower : MonoBehaviour
 
     [Header("Attribute")]
     public int level;
-    public int damage = 1;
+    public int damage;
     public float atkSpeed;
     public float range;
-    public float fireRate;
     private float fireCountDown = 0f;
 
     [Header("Other Components")]
@@ -34,6 +33,14 @@ public class Tower : MonoBehaviour
         FindTargetShoot();
     }
 
+    public void SetStats(TowerScriptable tower)
+    {
+        level = tower.level;
+        damage = tower.damage;
+        atkSpeed = tower.atkSpeed;
+        range = tower.range;
+    }
+
     private void FindTargetShoot()
     {
         findTarget = Physics2D.OverlapCircleAll(transform.position, range, enemyMask);
@@ -53,7 +60,7 @@ public class Tower : MonoBehaviour
         if ( fireCountDown < 0f )
         {
             Shoot();
-            fireCountDown = 1f / fireRate;
+            fireCountDown = 1f / atkSpeed;
         }
     }
 
@@ -65,6 +72,7 @@ public class Tower : MonoBehaviour
         {
             if (bullets != null)
             {
+                bullets.SetStatsBullet(damage);
                 bullets.Seek(c.transform);
             }
         }

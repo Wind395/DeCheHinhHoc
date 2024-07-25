@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Account : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Account : MonoBehaviour
         if (ValidateLogin(username, password))
         {
             Debug.Log("Login successful");
+            SceneManager.LoadScene("Menu");
             // Proceed to the next scene or perform other login actions
         }
         else

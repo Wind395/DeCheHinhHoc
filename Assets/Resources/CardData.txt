@@ -1,0 +1,8 @@
+CID	Name	Damage	Effect	Radius	Time
+1	ATK Speed	0	1.15	0	5
+2	Damage	0	01.07	0	3
+3	Range	0	1.1	0	5
+4	Heal	0	10	150	10
+5	Meteor	500	5	0	1
+6	Tornado	22	0	0	6
+7	Thunder Storm	150	0	0	5

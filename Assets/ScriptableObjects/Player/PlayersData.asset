@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df301e47105b19458406adcabc4c310, type: 3}
+  m_Name: PlayersData
+  m_EditorClassIdentifier: 
+  players:
+  - UID: 1
+    username: SirCarol
+    email: sircarol
+    password: '******'
+    stars: 99
+  - UID: 2
+    username: HolyMen
+    email: gigachad
+    password: '******'
+    stars: 70
+  - UID: 3
+    username: Kirito
+    email: kirito
+    password: '********'
+    stars: 80
+  - UID: 4
+    username: iugargr
+    email: igbriug
+    password: '******'
+    stars: 50
+  - UID: 5
+    username: ajrbgaibr
+    email: sjbgrg
+    password: '******'
+    stars: 30
+  - UID: 6
+    username: sdhjf uwh e
+    email: s uhgbwrbg
+    password: '*********'
+    stars: 20
+  - UID: 7
+    username: weiugbiwg
+    email: rbrguerg
+    password: nbeirbb
+    stars: 10
+  - UID: 8
+    username: ebgabg
+    email: ihnerohneoi
+    password: '************'
+    stars: 6
+  - UID: 9
+    username: jgnoirgieg
+    email: nogiwnoinrg
+    password: '***********'
+    stars: 18
+  - UID: 10
+    username: nbiruengoe
+    email: nognrign
+    password: '************'
+    stars: 30

@@ -8,8 +8,11 @@ public class BuildPlace : MonoBehaviour
     public SpriteRenderer frame;
     public TowerManager towerManager;
 
+
+    // After Clicked
     private void OnMouseDown()
     {
+        // Send postion from this object to towerManager to Set Position
         towerManager.SetTowerPosition(gameObject);
         SelectUI.SetActive(true);
         frame.enabled = true;

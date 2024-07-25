@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9328c54299f53e24589d9007ea9860bc, type: 3}
+  m_Name: MagicData
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 8350933250167233816, guid: 8228c6d599ce7fe42b12b9e6dd064341, type: 3}
+  level: 1
+  cost: 140
+  damage: 30
+  range: 2
+  atkSpeed: 0.8
