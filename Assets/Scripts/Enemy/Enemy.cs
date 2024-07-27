@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(gameObject); // Qu�i ??n ?i?m cu?i, h?y qu�i
+                    Destroy(gameObject);
                 }
             }
         }
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (path.Length > 0)
         {
-            target = path[0];  // ??t ?i?m b?t ??u c?a ???ng ?i
+            target = path[0];
         }
     }
 
@@ -74,6 +74,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // X? l� va ch?m v?i c�c ??i t??ng kh�c
+        
     }
 }

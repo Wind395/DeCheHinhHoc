@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MinionTower : MonoBehaviour
@@ -8,42 +10,54 @@ public class MinionTower : MonoBehaviour
 
     public GameObject[] direc;
     private GameObject[] targetPoints;
+    private GameObject targetDirection = null;
+    Transform[] points;
     public LayerMask laneLayer;
-    public GameObject minions;
+    public GameObject unit;
+
+
+
+    RaycastHit2D dirN;
+    RaycastHit2D dirS;
+    RaycastHit2D dirW;
+    RaycastHit2D dirE;
+
+    float shortestDistance = Mathf.Infinity;
 
     public float radius;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        RayCastAllDirection();
+        All();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //SummonUnits();
+    }
+
+    void MinDistance() {
         
     }
 
-    void DistaneCaculator() {
-        
-    }
+    void All() {
 
-    void RayCastAllDirection() {
-        RaycastHit2D dirN = Physics2D.Raycast(transform.position, Vector2.up, radius, laneLayer);
-        RaycastHit2D dirS = Physics2D.Raycast(transform.position, Vector2.down, radius, laneLayer);
-        RaycastHit2D dirW = Physics2D.Raycast(transform.position, Vector2.right, radius, laneLayer);
-        RaycastHit2D dirE = Physics2D.Raycast(transform.position, Vector2.left, radius, laneLayer);
+        dirN = Physics2D.Raycast(transform.position, Vector2.up, radius, laneLayer);
+        dirS = Physics2D.Raycast(transform.position, Vector2.down, radius, laneLayer);
+        dirW = Physics2D.Raycast(transform.position, Vector2.right, radius, laneLayer);
+        dirE = Physics2D.Raycast(transform.position, Vector2.left, radius, laneLayer);
 
-        float shortestDistance = Mathf.Infinity;
-        string shortestDirection = "";
 
         if (dirN.collider != null)
         {
             if (dirN.distance < shortestDistance)
             {
                 shortestDistance = dirN.distance;
-                shortestDirection = "North";
+                targetDirection = direc[0];
             }
         }
 
@@ -52,16 +66,7 @@ public class MinionTower : MonoBehaviour
             if (dirS.distance < shortestDistance)
             {
                 shortestDistance = dirS.distance;
-                shortestDirection = "South";
-            }
-        }
-
-        if (dirE.collider != null)
-        {
-            if (dirE.distance < shortestDistance)
-            {
-                shortestDistance = dirE.distance;
-                shortestDirection = "East";
+                targetDirection = direc[1];
             }
         }
 
@@ -70,18 +75,26 @@ public class MinionTower : MonoBehaviour
             if (dirW.distance < shortestDistance)
             {
                 shortestDistance = dirW.distance;
-                shortestDirection = "West";
+                targetDirection = direc[2];
             }
         }
 
-        if (shortestDistance == dirN.distance) {
-            direc[0].SetActive(true);
+        if (dirE.collider != null)
+        {
+            if (dirE.distance < shortestDistance)
+            {
+                shortestDistance = dirE.distance;
+                targetDirection = direc[3];
+            }
+        }
 
-            Transform[] points = direc[0].GetComponentsInChildren<Transform>();
+
+        if (targetDirection != null) {
+            targetDirection.SetActive(true);
+            Transform[] points = targetDirection.GetComponentsInChildren<Transform>();
             targetPoints = new GameObject[3];
 
             int j = 0;
-
             for (int i = 0; i < points.Length; i++) {
                 if (j < 3) {
                     targetPoints[j] = points[i].gameObject;
@@ -90,86 +103,10 @@ public class MinionTower : MonoBehaviour
                     break;
                 }
             }
-
             if (targetPoints.Length == 3) {
-                for (int i = 0; i < 3; i++) {
-                    GameObject minion = Instantiate(minions, transform.position, Quaternion.identity);
-                    StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
-                }
-            } else {
-                Debug.Log("Fuck");
-            }
-        }
-        else if (shortestDistance == dirS.distance) {
-            direc[1].SetActive(true);
-
-            Transform[] points = direc[1].GetComponentsInChildren<Transform>();
-            targetPoints = new GameObject[3];
-
-            int j = 0;
-
-            for (int i = 0; i < points.Length; i++) {
-                if (j < 3) {
-                    targetPoints[j] = points[i].gameObject;
-                    j++;
-                } else {
-                    break;
-                }
-            }
-
-            if (targetPoints.Length == 3) {
-                for (int i = 0; i < 3; i++) {
-                    GameObject minion = Instantiate(minions, transform.position, Quaternion.identity);
-                    StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
-                }
-            }
-        }
-
-        else if (shortestDistance == dirW.distance) {
-            direc[2].SetActive(true);
-            Transform[] points = direc[2].GetComponentsInChildren<Transform>();
-            targetPoints = new GameObject[3];
-
-            int j = 0;
-
-            for (int i = 0; i < points.Length; i++) {
-                if (j < 3) {
-                    targetPoints[j] = points[i].gameObject;
-                    j++;
-                } else {
-                    break;
-                }
-            }
-
-            if (targetPoints.Length == 3) {
-                for (int i = 0; i < 3; i++) {
-                    GameObject minion = Instantiate(minions, transform.position, Quaternion.identity);
-                    StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
-                }
-            }
-        }
-
-        else if (shortestDistance == dirE.distance) {
-            direc[3].SetActive(true);
-
-            Transform[] points = direc[3].GetComponentsInChildren<Transform>();
-            targetPoints = new GameObject[3];
-
-            int j = 0;
-
-            for (int i = 0; i < points.Length; i++) {
-                if (j < 3) {
-                    targetPoints[j] = points[i].gameObject;
-                    j++;
-                } else {
-                    break;
-                }
-            }
-
-            if (targetPoints.Length == 3) {
-                for (int i = 0; i < 3; i++) {
-                    GameObject minion = Instantiate(minions, transform.position, Quaternion.identity);
-                    StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
+            for (int i = 0; i < 3; i++) {
+                GameObject minion = Instantiate(unit, transform.position, Quaternion.identity);
+                StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
                 }
             }
         }
@@ -178,12 +115,16 @@ public class MinionTower : MonoBehaviour
     IEnumerator MoveToPosition(GameObject minion, Vector3 target)
     {
         float speed = 1f;
-        while (Vector3.Distance(minion.transform.position, target) > 0.1f)
-        {
-            minion.transform.position = Vector3.MoveTowards(minion.transform.position, target, speed * Time.deltaTime);
-            yield return null;
-        }
-        minion.transform.position = target;
+            if (minion.IsDestroyed()) {
+                yield return null;
+
+            }
+            while (Vector3.Distance(minion.transform.position, target) > 0.1f)
+            {
+                minion.transform.position = Vector3.MoveTowards(minion.transform.position, target, speed * Time.deltaTime);
+                yield return null;
+            }
+            minion.transform.position = target;
     }
 
     private void OnDrawGizmos() {

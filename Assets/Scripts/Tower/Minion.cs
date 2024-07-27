@@ -13,6 +13,8 @@ public class Minion : MonoBehaviour
     public int damage;
     public LayerMask enemyMask;
 
+    public bool foundEnemy;
+
     private Transform target;
     Collider2D[] findEnemies;
 
@@ -34,27 +36,27 @@ public class Minion : MonoBehaviour
         findEnemies = Physics2D.OverlapCircleAll(transform.position, atkRange, enemyMask);
         foreach (Collider2D enemy in findEnemies)
         {
-            if (enemy != null) {
+            if (enemy != null)
+            {
                 target = enemy.transform;
-                MoveAndAttack();
+                StartCoroutine(MoveAndAttack());
             }
+        }
+        if (findEnemies.Length == 0) {
+            rb.velocity = Vector2.zero;
         }
     }
 
 
-    void MoveAndAttack() {
-        if (target == null)
-        {
-            return;
-        }
+    IEnumerator MoveAndAttack() {
 
-        float distance = Vector3.Distance(transform.position, target.position);
-
+        float distance = Vector2.Distance(target.position, transform.position);
         if (distance <= 0.4)
         {
-            // Attack the enemy
             target.GetComponent<Enemy>().TakeDamage(damage);
-            Destroy(gameObject); // Destroy minion after attack
+            yield return null;
+            Destroy(gameObject);
+            
         }
         else
         {
