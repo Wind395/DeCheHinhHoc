@@ -37,12 +37,10 @@ public class MinionTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //SummonUnits();
-    }
-
-    void MinDistance() {
         
     }
+
+
 
     void All() {
 
@@ -115,16 +113,13 @@ public class MinionTower : MonoBehaviour
     IEnumerator MoveToPosition(GameObject minion, Vector3 target)
     {
         float speed = 1f;
-            if (minion.IsDestroyed()) {
-                yield return null;
-
-            }
-            while (Vector3.Distance(minion.transform.position, target) > 0.1f)
+            while (minion != null && Vector3.Distance(minion.transform.position, target) > 0.1f)
             {
+                if (minion == null) yield break;
                 minion.transform.position = Vector3.MoveTowards(minion.transform.position, target, speed * Time.deltaTime);
                 yield return null;
             }
-            minion.transform.position = target;
+            if (minion != null) minion.transform.position = target;
     }
 
     private void OnDrawGizmos() {
