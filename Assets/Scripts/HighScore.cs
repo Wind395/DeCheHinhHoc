@@ -13,7 +13,7 @@ public class HighScore : MonoBehaviour
         for(int i = 0; i < 10; i++)
         {
             playerName[i] = playerData[i].username;
-            score[i] = playerData[i].stars;
+            //score[i] = playerData[i].stars;
         }
     }
     IEnumerator InsertScore()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 [System.Serializable]
 public class MapWaveData
@@ -76,7 +77,8 @@ public class WaveManager : MonoBehaviour
         return enemyData.levels[enemyLevelIndex];
     }
 
-    public void EnemyDestroyed(){
+    public void EnemyDestroyed()
+    {
         enemiesRemaining--;
         if(enemiesRemaining <= 0){
             if(currentWave >= totalWavesInCurrentMap){

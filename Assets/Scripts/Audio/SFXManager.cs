@@ -1,32 +1,33 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class AudioManager : MonoBehaviour
+public class SFXManager : MonoBehaviour
 {
-    public AudioSource backgroundAudioSource;
-    public Slider backgroundVolumeSlider;
+    public AudioSource sfxAudioSource;
+    public Slider sfxVolumeSlider;
     public float fadeDuration = 1.0f;
 
     void Start()
     {
-        if (backgroundAudioSource == null)
+        if (sfxAudioSource == null)
         {
-            Debug.LogError("Please assign the Background AudioSource in the inspector.");
+            Debug.LogError("Please assign the SFX AudioSource in the inspector.");
             return;
         }
 
-        if (backgroundVolumeSlider != null)
+        if (sfxVolumeSlider != null)
         {
-            backgroundVolumeSlider.onValueChanged.AddListener(SetBackgroundVolume);
-            SetBackgroundVolume(backgroundVolumeSlider.value);
+            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+            SetSFXVolume(sfxVolumeSlider.value);
         }
     }
 
-    public void SetBackgroundVolume(float volume)
+    public void SetSFXVolume(float volume)
     {
         float adjustedVolume = volume / 100f; // Chuyển đổi từ 0-100 thành 0-1
-        StartCoroutine(FadeVolume(backgroundAudioSource, adjustedVolume, fadeDuration));
+        StartCoroutine(FadeVolume(sfxAudioSource, adjustedVolume, fadeDuration));
     }
 
     private IEnumerator FadeVolume(AudioSource audioSource, float targetVolume, float duration)

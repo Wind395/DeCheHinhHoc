@@ -67,4 +67,8 @@ public class UIManager : MonoBehaviour
         // Chuyển đến scene login
         SceneManager.LoadScene("LoginUI"); // Thay "LoginScene" bằng tên scene bạn muốn chuyển đến
     }
+
+    public void NextLevel() {
+        SceneManager.LoadScene(2);
+    }
 }

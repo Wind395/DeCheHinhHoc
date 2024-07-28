@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328c54299f53e24589d9007ea9860bc, type: 3}
   m_Name: MagicData
   m_EditorClassIdentifier: 
+  TID: 3
   towerPrefab: {fileID: 8350933250167233816, guid: 8228c6d599ce7fe42b12b9e6dd064341, type: 3}
   level: 1
   cost: 140

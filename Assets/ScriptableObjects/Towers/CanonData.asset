@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328c54299f53e24589d9007ea9860bc, type: 3}
   m_Name: CanonData
   m_EditorClassIdentifier: 
+  TID: 2
   towerPrefab: {fileID: 2281102718068509092, guid: 4bb82d4c137c4dd49af90bb410fc6cd4, type: 3}
   level: 1
   cost: 140

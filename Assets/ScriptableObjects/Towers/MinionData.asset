@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328c54299f53e24589d9007ea9860bc, type: 3}
   m_Name: MinionData
   m_EditorClassIdentifier: 
+  TID: 1
   towerPrefab: {fileID: 1340522883109926511, guid: 6715529b3d0437440b6986cf253d8820, type: 3}
   level: 1
   cost: 110

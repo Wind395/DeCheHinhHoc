@@ -8,7 +8,6 @@ public class PlayerData {
     public string username;
     public string email;
     public string password;
-    public int stars;
 }
 
 [CreateAssetMenu(fileName = "Player", menuName = "PlayerObjects/PlayersData", order = 1)]

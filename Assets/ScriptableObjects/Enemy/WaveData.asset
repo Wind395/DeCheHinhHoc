@@ -15,5 +15,3 @@ MonoBehaviour:
   maps:
   - mapName: 1
     totalWaves: 9
-  - mapName: 2
-    totalWaves: 14

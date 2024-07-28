@@ -130,6 +130,7 @@ MonoBehaviour:
   health: 200
   damage: 0
   speed: 1
+  goldReward: 40
 --- !u!58 &-178311492563600832
 CircleCollider2D:
   m_ObjectHideFlags: 0
