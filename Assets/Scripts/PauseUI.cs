@@ -16,7 +16,7 @@ public class PauseUI : MonoBehaviour
     }
     private void Update()
     {
-        if (waveManager.currentWave == waveManager.totalWavesInCurrentMap -1)
+        if (waveManager.currentWave == waveManager.totalWavesInCurrentMap)
         {
             currentWave.text = "Final wave";
         }

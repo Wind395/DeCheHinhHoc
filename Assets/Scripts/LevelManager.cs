@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public WaveManager waveManager;
     public GameObject enemyPrefab;
+    public GameObject WinUI;
+    public GameObject IngameUI;
     public float spawnInterval = 0.3f;
     public int enemyPerWave = 3;
     public float waveCD = 0;
@@ -25,19 +28,19 @@ public class LevelManager : MonoBehaviour
         } else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 
     void Start()
     {
+        waveManager.GameWinEvent += OnGameWin;
         FirstWave();
     }
 
     private void Update()
     {
         waveCD += Time.deltaTime;
-        if(waveCD >= (enemyPerWave * 2) / 3)
+        if(skipWave != null && waveCD >= (enemyPerWave * 2) / 3)
         {
             skipWave.SetActive(true);
         }
@@ -49,12 +52,14 @@ public class LevelManager : MonoBehaviour
 
     public void FirstWave()
     {
+        waveManager.enemiesRemaining = enemyPerWave;
         StartCoroutine(SpawnEnemies());
     }
     public void StartNextWave()
     {
         waveManager.StartNextWave();
         enemyPerWave++;
+        waveManager.enemiesRemaining += enemyPerWave;
         StartCoroutine(SpawnEnemies());
         skipWave.SetActive(false);
         waveCD = 0;
@@ -71,5 +76,21 @@ public class LevelManager : MonoBehaviour
             enemy.SetPath(path);
             yield return new WaitForSeconds(spawnInterval);
         }
+    }
+    private void OnGameWin(){
+        Time.timeScale = 0;
+        IngameUI.SetActive(false);
+        WinUI.SetActive(true);
+    }
+    public void ReStart(){
+        SceneManager.LoadScene("1");
+        Time.timeScale = 1;
+    }
+    public void Home(){
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
+    }
+    public void NextLvl(){
+
     }
 }

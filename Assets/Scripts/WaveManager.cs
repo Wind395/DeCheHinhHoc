@@ -16,12 +16,31 @@ public class WaveData : ScriptableObject
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager instance;
     public EnemyScriptable enemyData;
     public WaveData waveData;
     public string currentMapName;
 
     public int currentWave { get; private set; } = 0;
     public int totalWavesInCurrentMap { get; private set; } = 0;
+    public int enemiesRemaining = 0;
+
+    public delegate void OnWaveComplete();
+    public event OnWaveComplete WaveCompleteEvent;
+
+    public delegate void OnGameWin();
+    public event OnGameWin GameWinEvent;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -45,6 +64,9 @@ public class WaveManager : MonoBehaviour
         else
         {
             Debug.Log("All waves completed for the current map.");
+            if(GameWinEvent != null){
+                GameWinEvent.Invoke();
+            }
         }
     }
 
@@ -54,8 +76,18 @@ public class WaveManager : MonoBehaviour
         return enemyData.levels[enemyLevelIndex];
     }
 
-    public void ResetWaves()
-    {
-        currentWave = 0;
+    public void EnemyDestroyed(){
+        enemiesRemaining--;
+        if(enemiesRemaining <= 0){
+            if(currentWave >= totalWavesInCurrentMap){
+                if(GameWinEvent != null){
+                    GameWinEvent.Invoke();
+                }
+            }else{
+                if(WaveCompleteEvent != null){
+                    WaveCompleteEvent.Invoke();
+                }
+            }
+        }
     }
 }

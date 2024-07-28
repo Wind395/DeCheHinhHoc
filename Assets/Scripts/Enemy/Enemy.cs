@@ -68,6 +68,10 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            WaveManager waveManager = FindObjectOfType<WaveManager>();
+            if(waveManager != null){
+                waveManager.EnemyDestroyed();
+            }
             Destroy(gameObject);
         }
     }
