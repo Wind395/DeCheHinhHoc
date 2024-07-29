@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3334952816655018356}
   m_Layer: 0
   m_Name: Minion
-  m_TagString: Untagged
+  m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,13 +155,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1485f28881c65b46b53b3e1dda10cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 1
   atkRange: 0.98
-  damage: 200
+  damage: 12
+  atkSpeed: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  maxHealth: 250
   foundEnemy: 0
+  currentEnemy: {fileID: 0}
 --- !u!50 &3334952816655018356
 Rigidbody2D:
   serializedVersion: 4

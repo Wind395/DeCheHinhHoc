@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Transform target;
     private int pathIndex = 0;
-
+    private bool isTargeted = false;
+    public bool inCombat = false;
 
 
     void Start()
@@ -27,38 +28,31 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // Check if the target is set
-        if (target != null)
+        if (target != null && !inCombat && ! isTargeted)
         {
-            // Enemy has reached the target
-            if (Vector2.Distance(target.position, transform.position) <= 0.1f)
-            {
-                // Move to the next target in the path
-                pathIndex++;
-                if (pathIndex < LevelManager.instance.path.Length)
-                {
-                    target = LevelManager.instance.path[pathIndex];
-                }
-                else
-                {
-                    // Destroy the enemy when it reaches the end of the path
-                    LevelManager.instance.homeHealth--;
-                    Destroy(gameObject);
-                    if (LevelManager.instance.homeHealth <= 0) {
-                        LevelManager.instance.GameOver();
-                    }
+            Move();
+        }else{
+            rb.velocity = Vector2.zero;
+        }
+    }
+    void Move(){
+        // Enemy has reached the target
+        if(Vector2.Distance(target.position, transform.position) <= .1f){
+            // Move to the next target in the path
+            pathIndex ++;
+            if(pathIndex < LevelManager.instance.path.Length){
+                target = LevelManager.instance.path[pathIndex];
+            }else{
+                // Destroy the enemy when it reaches the end of the path
+                LevelManager.instance.homeHealth--;
+                Destroy(gameObject);
+                if (LevelManager.instance.homeHealth <= 0) {
+                    LevelManager.instance.GameOver();
                 }
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (target != null)
-        {
-            // Move the enemy towards the target
-            Vector2 dir = (target.position - transform.position).normalized;
-            rb.velocity = dir * speed;
-        }
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.velocity = direction * speed;
     }
 
     public void Initialize(EnemyLevel enemyLevel)
@@ -77,7 +71,9 @@ public class Enemy : MonoBehaviour
             target = path[0];
         }
     }
-
+    public void SetTargeted(bool targeted){
+        isTargeted = targeted;
+    }
     public void TakeDamage(int damage)
     {
         // Reduce the enemy's health by the damage amount
@@ -91,6 +87,29 @@ public class Enemy : MonoBehaviour
             }
             LevelManager.instance.AddGold(goldReward);
             Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Minion") && !inCombat && collision.GetComponent<Minion>().currentEnemy == null){
+            StartCoroutine(Combat(collision.gameObject.GetComponent<Minion>()));
+        }
+    }
+    IEnumerator Combat(Minion minion){
+        inCombat = true;
+        minion.currentEnemy = this;
+        while(minion != null && minion.currentHealth > 0 && health > 0){
+            minion.TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
+        }
+        if (health <= 0){
+            minion.currentEnemy = null;
+            Destroy(gameObject);
+            yield break;
+        }
+        if(minion.currentHealth <= 0){
+            inCombat = false;
+            yield break;
         }
     }
 }
