@@ -2,24 +2,11 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 
-[System.Serializable]
-public class MapWaveData
-{
-    public string mapName;
-    public int totalWaves;
-}
-
-[CreateAssetMenu(fileName = "WaveData", menuName = "ScriptableObjects/WaveData", order = 1)]
-public class WaveData : ScriptableObject
-{
-    public MapWaveData[] maps;
-}
-
 public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
     public EnemyScriptable enemyData;
-    public WaveData waveData;
+    public WaveScriptable waveData;
     public string currentMapName;
 
     public int currentWave { get; private set; } = 0;
