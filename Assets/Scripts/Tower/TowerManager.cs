@@ -7,6 +7,7 @@ public class TowerManager : MonoBehaviour
     public TowerScriptable[] towers;
     private GameObject currentTowerPosition;
     public GameObject SelectUI;
+    public GameObject CardUI;
     public BuildPlace buildPlace;
 
     // Set Position for Tower after click to Build Place (In Build Place)
@@ -22,9 +23,12 @@ public class TowerManager : MonoBehaviour
         if (currentTowerPosition != null && towerIndex >= 0 && towerIndex < towers.Length)
         {
             GameObject tower = Instantiate(towers[towerIndex].towerPrefab, currentTowerPosition.transform.position, Quaternion.identity);
-            Tower towerInfo = tower.GetComponent<Tower>();
-            towerInfo.SetStats(towers[towerIndex]);
+            BaseTower towerInfo = tower.GetComponent<BaseTower>();
+            if(towerInfo != null){
+                towerInfo.SetStats(towers[towerIndex]);
+            }
             SelectUI.SetActive(false);
+            CardUI.SetActive(true);
             buildPlace.frame.enabled = false;
             // Reset Position after Build Tower at that place
             currentTowerPosition = null;
@@ -34,6 +38,7 @@ public class TowerManager : MonoBehaviour
     // Active Back Button Outside
     public void Back() {
         SelectUI.SetActive(false);
+        CardUI.SetActive(true);
         buildPlace.frame.enabled = false;
         currentTowerPosition = null;
     }

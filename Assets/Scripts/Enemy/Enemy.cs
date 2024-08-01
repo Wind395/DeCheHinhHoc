@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     // Attributes
     [Header("Attribute")]
     public int level;
-    public int health;
+    public float health;
     public int damage;
     public float speed;
     public int goldReward = 10;
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
     public void SetTargeted(bool targeted){
         isTargeted = targeted;
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         // Reduce the enemy's health by the damage amount
         health -= damage;

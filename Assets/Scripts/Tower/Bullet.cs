@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    public int damage;
+    public float damage;
     public float Speed;
 
     private Transform target;
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
         rb.velocity = direction * Speed;
     }
 
-    public void SetStatsBullet(int damageValue)
+    public void SetStatsBullet(float damageValue)
     {
         damage = damageValue;
     }

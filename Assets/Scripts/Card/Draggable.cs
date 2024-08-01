@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 
-    private Vector3 startPosition;
-    private Transform originalParent;
+    
+    private Vector2 startPosition;
     private CanvasGroup canvasGroup;
+
+    public DropArea dropArea;
+
+    public Card card;
+    
 
 
     void Start()
@@ -18,21 +24,29 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log("Begin Drag");
         startPosition = transform.position;
-        originalParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
-        transform.SetParent(transform.root);
+        canvasGroup.alpha = 0.5f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        Debug.Log("Dragging");
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = startPosition;
         canvasGroup.blocksRaycasts = true;
-        transform.SetParent(originalParent);
+        canvasGroup.alpha = 1f;
+        if (!gameObject.IsDestroyed()) {
+            transform.position = startPosition;
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        Debug.Log("Dropped");
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638619187579549561}
   - component: {fileID: 9042155779875639702}
-  - component: {fileID: 5885949908743908274}
+  - component: {fileID: 1176775420273536784}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5885949908743908274
+--- !u!114 &1176775420273536784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2000471421710437204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468961ca7ad7d5540961e72796c6fb91, type: 3}
+  m_Script: {fileID: 11500000, guid: 612533f92ef975146bee1397a9d9b2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _level: 0
+  _damage: 0
+  _atkSpeed: 0
+  _range: 0
   level: 0
   damage: 0
   atkSpeed: 0

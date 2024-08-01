@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class NormalBowTower : BaseTower
 {
-
     [Header("Attribute")]
     public int level;
-    public int damage;
+    public float damage;
     public float atkSpeed;
     public float range;
     private float fireCountDown = 0f;
@@ -17,44 +15,40 @@ public class Tower : MonoBehaviour
     [Header("Other Components")]
     public GameObject Bullet;
     public LayerMask enemyMask;
-
     private Transform target;
-
     Collider2D[] findTarget;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        FindTargetShoot();
+        if(target == null || !IsTargetInRange()){
+            FindTarget();
+        }else{
+            RotateTowardTarget();
+            ShootCountDown();
+        }
     }
 
-    public void SetStats(TowerScriptable tower)
-    {
-        level = tower.level;
-        damage = tower.damage;
-        atkSpeed = tower.atkSpeed;
-        range = tower.range * .02f;
+    private bool IsTargetInRange(){
+        float distance = Vector2.Distance(transform.position, target.position);
+        return distance <= range;
     }
 
-    private void FindTargetShoot()
+    private void FindTarget()
     {
         findTarget = Physics2D.OverlapCircleAll(transform.position, range, enemyMask);
-
-        foreach (Collider2D c in findTarget)
+        if (findTarget.Length > 0)
         {
-            if (findTarget != null)
-            {
-                target = c.transform;
-                RotateTowardTarget();
-                ShootCountDown();
-            }
+            target = findTarget[0].transform;
         }
+    }
+
+    public override void SetStats(TowerScriptable tower)
+    {
+        base.SetStats(tower);
+        level = base._level;
+        damage = base._damage;
+        atkSpeed = base._atkSpeed;
+        range = base._range;
     }
 
     private void RotateTowardTarget()
@@ -76,14 +70,14 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bulletsGO = Instantiate(Bullet, transform.position, Quaternion.identity);
-        Bullet bullets = bulletsGO.GetComponent<Bullet>();
-        foreach (Collider2D c in findTarget)
+        if (target != null)
         {
+            GameObject bulletsGO = Instantiate(Bullet, transform.position, Quaternion.identity);
+            Bullet bullets = bulletsGO.GetComponent<Bullet>();
             if (bullets != null)
             {
                 bullets.SetStatsBullet(damage);
-                bullets.Seek(c.transform);
+                bullets.Seek(target);
             }
         }
     }

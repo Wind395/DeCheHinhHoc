@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a41cba0d36f7ec4099eccc38abbd193, type: 3}
   m_Name: ATK Speed
   m_EditorClassIdentifier: 
-  cardID: 1
-  cardName: 
+  CID: 2
+  cardName: ATK Speed
   damage: 0
-  effect: 0
+  effect: 1.15
   radius: 0
-  time: 0
+  time: 5

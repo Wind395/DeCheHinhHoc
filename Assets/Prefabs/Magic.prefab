@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8386191082549796960}
   - component: {fileID: 6707540411513024848}
-  - component: {fileID: 2428950336559990720}
+  - component: {fileID: 9197312427668444632}
   m_Layer: 0
   m_Name: Magic
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1924962061
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47200b9cb015f744886a9f8a04e9404e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2428950336559990720
+--- !u!114 &9197312427668444632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,14 +94,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8350933250167233816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468961ca7ad7d5540961e72796c6fb91, type: 3}
+  m_Script: {fileID: 11500000, guid: 612533f92ef975146bee1397a9d9b2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _level: 0
+  _damage: 0
+  _atkSpeed: 0
+  _range: 0
   level: 0
   damage: 0
   atkSpeed: 0
   range: 0
-  fireRate: 0
+  roatationSpeed: 200
   Bullet: {fileID: 123327058898506675, guid: 164831a803f9df54584a4c86b522207b, type: 3}
   enemyMask:
     serializedVersion: 2

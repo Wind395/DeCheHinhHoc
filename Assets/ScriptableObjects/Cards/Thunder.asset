@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a41cba0d36f7ec4099eccc38abbd193, type: 3}
   m_Name: Thunder
   m_EditorClassIdentifier: 
-  cardID: 7
-  cardName: 
-  damage: 0
-  effect: 0
-  radius: 0
-  time: 0
+  CID: 6
+  cardName: Thunder
+  damage: 150
+  effect: 1
+  radius: 0.5
+  time: 5

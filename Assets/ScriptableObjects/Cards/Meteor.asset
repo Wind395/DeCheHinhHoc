@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a41cba0d36f7ec4099eccc38abbd193, type: 3}
   m_Name: Meteor
   m_EditorClassIdentifier: 
-  cardID: 5
-  cardName: 
-  damage: 0
-  effect: 0
+  CID: 7
+  cardName: Meteor
+  damage: 500
+  effect: 5
   radius: 0
-  time: 0
+  time: 3
