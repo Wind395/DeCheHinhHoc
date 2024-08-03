@@ -12,6 +12,8 @@ public class MinionTower : MonoBehaviour
     private GameObject[] targetPoints;
     private GameObject targetDirection = null;
     Transform[] points;
+    private List<GameObject> minions = new List<GameObject>();
+    private int maxMinions = 3;
     public LayerMask laneLayer;
     public GameObject unit;
 
@@ -33,15 +35,6 @@ public class MinionTower : MonoBehaviour
         All();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
     void All() {
 
         dirN = Physics2D.Raycast(transform.position, Vector2.up, radius, laneLayer);
@@ -85,13 +78,10 @@ public class MinionTower : MonoBehaviour
                 targetDirection = direc[3];
             }
         }
-
-
         if (targetDirection != null) {
             targetDirection.SetActive(true);
             Transform[] points = targetDirection.GetComponentsInChildren<Transform>();
             targetPoints = new GameObject[3];
-
             int j = 0;
             for (int i = 0; i < points.Length; i++) {
                 if (j < 3) {
@@ -101,13 +91,42 @@ public class MinionTower : MonoBehaviour
                     break;
                 }
             }
-            if (targetPoints.Length == 3) {
-            for (int i = 0; i < 3; i++) {
-                GameObject minion = Instantiate(unit, transform.position, Quaternion.identity);
-                StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
+            StartCoroutine(SpawnMinion());
+        }
+    }
+    bool isSpawningAgain = false;
+    IEnumerator SpawnMinion(){      
+        while(true){
+            if (targetPoints.Length == 3) {                
+                for (int i = 0; i < maxMinions; i++) {
+                    if(minions.Count < maxMinions && !isSpawningAgain){
+                        GameObject minion = Instantiate(unit, transform.position, Quaternion.identity);
+                        StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
+                        minions.Add(minion);
+                        minion.GetComponent<Minion>().idlePosition = targetPoints[i].transform;
+                    }
                 }
             }
+            minions.RemoveAll(x => x == null);
+            if (!isSpawningAgain) {
+                isSpawningAgain = true;
+                StartCoroutine(SpawnAgain());
+            }            
+            yield return new WaitForSeconds(.5f);
         }
+    }
+
+    IEnumerator SpawnAgain() {
+        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < maxMinions; i++) {
+            if(minions.Count < maxMinions){
+                GameObject minion = Instantiate(unit, transform.position, Quaternion.identity);
+                StartCoroutine(MoveToPosition(minion, targetPoints[i].transform.position));
+                minions.Add(minion);
+                minion.GetComponent<Minion>().idlePosition = targetPoints[i].transform;
+            }
+        }
+        isSpawningAgain = false;
     }
 
     IEnumerator MoveToPosition(GameObject minion, Vector3 target)

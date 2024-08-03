@@ -15,6 +15,7 @@ public class Minion : MonoBehaviour
     public LayerMask enemyMask;
     public float maxHealth = 250f;
     public bool foundEnemy;
+    public Transform idlePosition;
 
     public float currentHealth {get; private set;}
     [HideInInspector] public Enemy currentEnemy;
@@ -119,7 +120,6 @@ public class Minion : MonoBehaviour
             if (!foundEnemy)
             {
                 currentHealth = Mathf.Min(maxHealth, currentHealth + maxHealth * 0.05f);
-                Debug.Log("Minion heal: " + currentHealth);
             }
             yield return new WaitForSeconds(2f);
         }

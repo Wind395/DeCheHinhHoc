@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9034155677845001320}
   - component: {fileID: 395881420610486136}
-  - component: {fileID: 8922570774890199326}
   - component: {fileID: 7400655660134484813}
   - component: {fileID: 3334952816655018356}
+  - component: {fileID: 1607962586549028191}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Minion
@@ -87,62 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8922570774890199326
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9053890926954193592}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3902439, y: 0.3902439}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.00042057037, y: 0.14775991}
-      - {x: -0.19512194, y: 0.19512194}
-      - {x: -0.15702647, y: 0.12709928}
-      - {x: -0.07806492, y: -0.00544405}
-      - {x: -0.010845218, y: -0.19409245}
-      - {x: 0.012904678, y: -0.19512194}
-      - {x: 0.038323935, y: -0.11664295}
-      - {x: 0.078443766, y: -0.0038064718}
-      - {x: 0.11390114, y: 0.060620427}
-      - {x: 0.16423362, y: 0.1291585}
-      - {x: 0.19512194, y: 0.19512194}
-  m_UseDelaunayMesh: 0
 --- !u!114 &7400655660134484813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +108,7 @@ MonoBehaviour:
     m_Bits: 64
   maxHealth: 250
   foundEnemy: 0
+  idlePosition: {fileID: 0}
   currentEnemy: {fileID: 0}
 --- !u!50 &3334952816655018356
 Rigidbody2D:
@@ -192,3 +137,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &1607962586549028191
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053890926954193592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.05}
+  serializedVersion: 2
+  m_Radius: 0.1

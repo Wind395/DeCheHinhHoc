@@ -42,6 +42,7 @@ public class PauseUI : MonoBehaviour
 
     public void PlayAgain() {
         SceneManager.LoadScene(2);
+        Time.timeScale = 1;
     }
 
     public void ExitToMenu() {
