@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Thunder
   m_EditorClassIdentifier: 
   CID: 6
+  cardType: 5
   cardName: Thunder
   damage: 150
   effect: 1

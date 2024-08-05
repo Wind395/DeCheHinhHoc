@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ATK Speed
   m_EditorClassIdentifier: 
   CID: 2
+  cardType: 1
   cardName: ATK Speed
   damage: 0
   effect: 1.15

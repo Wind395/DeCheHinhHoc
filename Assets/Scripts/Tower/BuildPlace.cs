@@ -10,6 +10,10 @@ public class BuildPlace : MonoBehaviour
     public TowerManager towerManager;
 
 
+    void Update() {
+        
+    }
+
     // After Clicked
     private void OnMouseDown()
     {

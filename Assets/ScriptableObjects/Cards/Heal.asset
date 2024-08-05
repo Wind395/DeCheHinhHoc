@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   CID: 4
+  cardType: 3
   cardName: Heal
   damage: 0
   effect: 10

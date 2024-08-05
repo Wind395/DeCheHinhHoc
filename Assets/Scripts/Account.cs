@@ -16,12 +16,14 @@ public class Account : MonoBehaviour
     public Button loginButton;
     public Button registerButton;
 
+    [System.Obsolete]
     void Start()
     {
         loginButton.onClick.AddListener(OnLogin);
         registerButton.onClick.AddListener(OnRegister);
     }
 
+    [System.Obsolete]
     void OnLogin()
     {
         StartCoroutine(LoginAccount());
@@ -32,6 +34,7 @@ public class Account : MonoBehaviour
         StartCoroutine(RegistAccount());
     }
 
+    [System.Obsolete]
     IEnumerator LoginAccount()
     {
         WWWForm form = new WWWForm();
@@ -71,7 +74,9 @@ public class Account : MonoBehaviour
                     PlayerPrefs.SetString("token", get);
                     PlayerPrefs.SetString("name", playerNameField.text);
                     Debug.Log(get);
+                    Debug.Log(playerNameField);
                     yield return new WaitForSeconds(2);
+                    //StartCoroutine(GetHighscore());
                     SceneManager.LoadScene(1);
                 }
             }
@@ -102,4 +107,40 @@ public class Account : MonoBehaviour
             }
         }
     }
+
+    // IEnumerator GetHighscore() {
+    //     WWWForm form = new WWWForm();
+    //     form.AddField("token", PlayerPrefs.GetString("token"));
+    //     Debug.Log("Token OK");
+    //     // form.AddField("token", PlayerPrefs.GetString("token"));
+    //     // Debug.Log(PlayerPrefs.GetString("token"));
+    //     // for (int i = 0; i < 10; i++)
+    //     // {
+    //     //     playerName[i] = playerGameData[i].players[i].username;
+    //     //     score[i] = playerGameData[i].players[i].stars;
+    //     //     Debug.Log(playerName[i]);
+    //     //     Debug.Log(score[i]);
+    //     // }
+    //     UnityWebRequest www = UnityWebRequest.Post("https://fpl.expvn.com/GetHighscore.php", form);
+    //     yield return www.SendWebRequest();
+
+    //     string response = www.downloadHandler.text;
+    //     Debug.Log(response);
+
+    //     // Split the response string into lines
+    //     string[] lines = response.Split('\n');
+
+    //     // Iterate over each line
+    //     foreach (string line in lines)
+    //     {
+    //         // Split each line into columns using the tab character
+    //         string[] columns = line.Split('\t');
+
+    //         // Iterate over each column
+    //         foreach (string column in columns)
+    //         {
+    //             Debug.Log(column);
+    //         }
+    //     }
+    // }
 }

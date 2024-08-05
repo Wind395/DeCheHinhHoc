@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000019073, y: -112.5}
-  m_SizeDelta: {x: 63.33, y: 35.74}
+  m_AnchoredPosition: {x: 0.0000019073, y: -105.16}
+  m_SizeDelta: {x: 59.51, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7924816556516576785
 CanvasRenderer:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27.33
+  m_fontSizeBase: 27.33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -148,9 +148,10 @@ GameObject:
   - component: {fileID: -8475036137497652746}
   - component: {fileID: -3328066635306876472}
   - component: {fileID: 4174426383358414989}
+  - component: {fileID: 6775426565847938815}
   m_Layer: 5
   m_Name: Heal
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd25d5a53b77a4d4d94cf620ae1c250d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropArea: {fileID: 5142410096877000559, guid: 826535e86f3f1264195bbb1a9c81195f, type: 3}
+  canvas: {fileID: 0}
+  dropArea: {fileID: 0}
+  card: {fileID: 0}
 --- !u!114 &4174426383358414989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +261,51 @@ MonoBehaviour:
   radius: 0
   time: 0
   cardInfo: {fileID: 11400000, guid: 4ba846e7f05c07b488d20d30cfe0e349, type: 2}
+--- !u!61 &6775426565847938815
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225495838475806426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25856018, y: 0.4267044}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 160.17487, y: 270.19476}
+  m_EdgeRadius: 0
 --- !u!1 &7684032380472443451
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +340,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.6, y: -73.5}
-  m_SizeDelta: {x: 87.56, y: 24.5}
+  m_AnchoredPosition: {x: 33.8, y: -65}
+  m_SizeDelta: {x: 86.3, y: 22.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8701860405690801110
 CanvasRenderer:

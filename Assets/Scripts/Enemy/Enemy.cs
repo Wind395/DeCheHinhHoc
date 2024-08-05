@@ -20,6 +20,17 @@ public class Enemy : MonoBehaviour
     public bool inCombat = false;
 
 
+    // Burn effect attributes
+    private bool isBurning = false;
+    private float burnTimeRemaining = 0;
+    private int burnDamagePerSecond;
+    private Coroutine burnCoroutine;
+
+    // Slow effect attributes
+    private bool isSlowed = false;
+    private float originalSpeed;
+    private Coroutine slowCoroutine;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -89,6 +100,87 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+    // Apply burn effect
+    public void ApplyBurnEffect(int damagePerSecond, float duration)
+    {
+        burnDamagePerSecond = damagePerSecond;
+        burnTimeRemaining = duration;
+        if (!isBurning)
+        {
+            isBurning = true;
+            burnCoroutine = StartCoroutine(Burn());
+        }
+        else
+        {
+            // Reset burn time if already burning
+            burnTimeRemaining = duration;
+        }
+    }
+
+    private IEnumerator Burn()
+    {
+        while (burnTimeRemaining > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            TakeDamage(burnDamagePerSecond);
+            burnTimeRemaining -= 1f;
+        }
+        isBurning = false;
+    }
+
+    // Apply slow effect
+    public void ApplySlowEffect(float slowPercentage, float duration)
+    {
+        if (isSlowed)
+        {
+            // If already slowed, refresh the duration
+            StopCoroutine(slowCoroutine);
+        }
+        else
+        {
+            // Apply slow effect
+            isSlowed = true;
+            speed *= (1f - slowPercentage / 100f);
+        }
+        slowCoroutine = StartCoroutine(Slow(duration));
+    }
+
+    private IEnumerator Slow(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        // Reset speed after slow effect ends
+        speed = originalSpeed;
+        isSlowed = false;
+    }
+
+
+    public void ApplyChainLightning(float damage, float splashDamagePercentage, int maxChainTargets)
+    {
+        List<Enemy> enemiesInRange = new List<Enemy>();
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 5f); // Vùng ảnh hưởng của sát thương lan
+
+        foreach (Collider2D hit in hitEnemies)
+        {
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy != null && enemy != this) // Tránh bắn trúng kẻ thù chính
+            {
+                enemiesInRange.Add(enemy);
+            }
+        }
+
+        // Giới hạn số lượng mục tiêu lan
+        int targetsToDamage = Mathf.Min(maxChainTargets, enemiesInRange.Count);
+
+        for (int i = 0; i < targetsToDamage; i++)
+        {
+            Enemy targetEnemy = enemiesInRange[i];
+            targetEnemy.TakeDamage((int)(damage * splashDamagePercentage / 100f));
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Minion") && !inCombat && collision.GetComponent<Minion>().currentEnemy == null){

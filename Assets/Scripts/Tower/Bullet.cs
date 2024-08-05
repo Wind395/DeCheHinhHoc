@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         target = _target;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.transform.position == target.position)
         {

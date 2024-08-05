@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8420629624798528665}
   - component: {fileID: -4962040044597091366}
   - component: {fileID: 3150070148905649250}
+  - component: {fileID: 7350574873125153364}
   m_Layer: 5
   m_Name: Tornado
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd25d5a53b77a4d4d94cf620ae1c250d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropArea: {fileID: 5142410096877000559, guid: 826535e86f3f1264195bbb1a9c81195f, type: 3}
+  canvas: {fileID: 0}
+  dropArea: {fileID: 0}
+  card: {fileID: 0}
 --- !u!114 &3150070148905649250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +127,51 @@ MonoBehaviour:
   radius: 0
   time: 0
   cardInfo: {fileID: 11400000, guid: f9e436f341ac932499cd64a58813fbef, type: 2}
+--- !u!61 &7350574873125153364
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073183103330889847}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25856018, y: 0.4267044}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 160.17487, y: 270.19476}
+  m_EdgeRadius: 0
 --- !u!1 &6566799720547002890
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,8 +206,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.2, y: -70.4}
-  m_SizeDelta: {x: 59.43, y: 23.19}
+  m_AnchoredPosition: {x: 19.5, y: -63.8}
+  m_SizeDelta: {x: 53.84, y: 19.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &472010796735465328
 CanvasRenderer:
@@ -216,8 +264,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18.2
+  m_fontSizeBase: 18.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -292,8 +340,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3, y: -109.2}
-  m_SizeDelta: {x: 127.79, y: 35.2}
+  m_AnchoredPosition: {x: 8.91, y: -103.2}
+  m_SizeDelta: {x: 115.13, y: 28.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2579522179456112226
 CanvasRenderer:
@@ -350,8 +398,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26.8
+  m_fontSizeBase: 26.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

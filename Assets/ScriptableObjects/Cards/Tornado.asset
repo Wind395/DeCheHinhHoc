@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tornado
   m_EditorClassIdentifier: 
   CID: 5
+  cardType: 4
   cardName: Tornado
   damage: 22
   effect: 0

@@ -82,6 +82,36 @@ public class NormalBowTower : BaseTower
         }
     }
 
+
+    public void ApplyCard(Card card)
+    {
+        switch (card.cardType)
+        {
+            case Card.CardTypes.ATK:
+                damage *= card.damage;
+                break;
+            case Card.CardTypes.ATKSpeed:
+                atkSpeed *= card.effect;
+                break;
+            case Card.CardTypes.Range:
+                range *= card.effect;
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        // Kiểm tra xem đối tượng va chạm có phải thẻ bài hay không
+        if (other.gameObject.CompareTag("Card")) {
+            if (other.gameObject.CompareTag("Card") == true) {
+                Card card = other.gameObject.GetComponent<Draggable>().card;
+                Debug.Log("Trigged");
+                ApplyCard(card);
+            } else {
+                Debug.Log("Not Found");
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

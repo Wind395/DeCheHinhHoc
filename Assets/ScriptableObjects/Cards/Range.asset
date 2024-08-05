@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Range
   m_EditorClassIdentifier: 
   CID: 3
+  cardType: 2
   cardName: Range
   damage: 0
   effect: 1.1

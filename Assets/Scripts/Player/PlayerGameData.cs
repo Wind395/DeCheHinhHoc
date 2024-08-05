@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [System.Serializable]
 public class PlayerGame {
     public int UID;
+    public string username;
     public int diamonds;
-    public string stars;
+    public int stars;
     public string levels;
     public int cardATK;
     public int cardATKSpeed;
