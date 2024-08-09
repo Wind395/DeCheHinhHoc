@@ -25,7 +25,8 @@ public class TowerManager : MonoBehaviour
             GameObject tower = Instantiate(towers[towerIndex].towerPrefab, currentTowerPosition.transform.position, Quaternion.identity);
             BaseTower towerInfo = tower.GetComponent<BaseTower>();
             if(towerInfo != null){
-                towerInfo.SetStats(towers[towerIndex]);
+                TowerScriptable towerScript = towers[towerIndex];
+                towerInfo.SetStats(towerScript, 1);
             }
             SelectUI.SetActive(false);
             CardUI.SetActive(true);

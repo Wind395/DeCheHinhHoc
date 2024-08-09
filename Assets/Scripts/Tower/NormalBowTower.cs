@@ -42,9 +42,10 @@ public class NormalBowTower : BaseTower
         }
     }
 
-    public override void SetStats(TowerScriptable tower)
+    public override void SetStats(TowerScriptable tower, int _level)
     {
-        base.SetStats(tower);
+        base.SetStats(tower, _level);
+        TowerLevelData levelData = tower.GetLevelData(_level);
         level = base._level;
         damage = base._damage;
         atkSpeed = base._atkSpeed;
